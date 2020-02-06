@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "204199946173",
+    "firebase_url": "https://uorquetesteloginui.firebaseio.com",
+    "project_id": "uorquetesteloginui",
+    "storage_bucket": "uorquetesteloginui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204199946173:android:1008b59112ec75fce514d4",
+        "android_client_info": {
+          "package_name": "br.gvictor.uorque_firebase_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204199946173-n5gtf4slgf2e4lt8p6hi0k84sta8hash.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH9Qp2_BDm93daoS6NqlZ6j9zOy2c2w3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204199946173-n5gtf4slgf2e4lt8p6hi0k84sta8hash.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

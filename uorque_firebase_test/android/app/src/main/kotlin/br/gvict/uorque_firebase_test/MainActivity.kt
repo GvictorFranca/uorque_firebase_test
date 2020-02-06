@@ -1,4 +1,4 @@
-package com.example.uorque_firebase_test
+package br.gvictor.uorque_firebase_test
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
