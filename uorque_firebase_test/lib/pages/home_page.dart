@@ -18,13 +18,11 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 320),
               child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed('/second');
-                },
+                onTap: () {},
                 child: Text(
                   "Entrar",
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w500,
+                  style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -35,15 +33,15 @@ class _HomePageState extends State<HomePage> {
             Center(
               child: Text(
                 "Ola! E novo por aqui ?",
-                style: GoogleFonts.roboto(
-                    fontSize: 25, fontWeight: FontWeight.w500),
+                style: GoogleFonts.openSans(
+                    fontSize: 25, fontWeight: FontWeight.bold)
               ),
             ),
             Center(
               child: Text(
                 "Escolha como prefere iniciar seu cadastro",
-                style: GoogleFonts.roboto(
-                    fontSize: 20, fontWeight: FontWeight.w300),
+                style: GoogleFonts.openSans(
+                    fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: 30),
@@ -58,14 +56,14 @@ class _HomePageState extends State<HomePage> {
                 child: Center(
                   child: Text(
                     'Entrar com Facebook',
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).primaryColor),
                   ),
                 ),
               ),
             ),
-            SizedBox(height:20),
+            SizedBox(height: 20),
             SizedBox(
               height: 60,
               width: 300,
@@ -73,13 +71,14 @@ class _HomePageState extends State<HomePage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 color: Theme.of(context).primaryColor,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/second');
+                },
                 child: Center(
                   child: Text(
                     'Criar Conta',
-                    style: GoogleFonts.roboto(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black54),
+                    style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.w500, color: Colors.black54),
                   ),
                 ),
               ),
