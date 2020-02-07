@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uorque_firebase_test/styles/colors.dart';
+import 'package:uorque_firebase_test/styles/icons.dart';
+import 'package:uorque_firebase_test/styles/textContants.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,39 +27,50 @@ class _HomePageState extends State<HomePage> {
                   "Entrar",
                   style: GoogleFonts.openSans(
                     fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
                 ),
               ),
             ),
             SizedBox(height: 100),
-            Center(child: Image.asset('assets/images/UORQUE.png')),
+            SizedBox(
+              height: 92,
+              width: 136,
+              child: SvgPicture.asset(iconUorque),
+            ),
             SizedBox(height: 50),
             Center(
               child: Text(
-                "Ola! E novo por aqui ?",
+                title,
                 style: GoogleFonts.openSans(
-                    fontSize: 25, fontWeight: FontWeight.bold)
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: titleColor,
+                ),
               ),
             ),
             Center(
               child: Text(
-                "Escolha como prefere iniciar seu cadastro",
+                subTitile,
                 style: GoogleFonts.openSans(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: subTitleColor,
+                ),
               ),
             ),
             SizedBox(height: 30),
             SizedBox(
-              height: 60,
-              width: 300,
+              height: 50,
+              width: 310,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                color: Colors.blueGrey,
+                color: faceButtonColor,
                 onPressed: () {},
                 child: Center(
                   child: Text(
-                    'Entrar com Facebook',
+                    facebookTitle,
                     style: GoogleFonts.openSans(
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).primaryColor),
@@ -65,8 +80,8 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             SizedBox(
-              height: 60,
-              width: 300,
+              height: 50,
+              width: 310,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
@@ -76,9 +91,10 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: Center(
                   child: Text(
-                    'Criar Conta',
+                    createAc,
                     style: GoogleFonts.openSans(
-                        fontWeight: FontWeight.w500, color: Colors.black54),
+                        fontWeight: FontWeight.w500, 
+                        color: titleColor),
                   ),
                 ),
               ),
