@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(left: 320),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed('/login');
+                },
                 child: Text(
                   "Entrar",
                   style: GoogleFonts.openSans(

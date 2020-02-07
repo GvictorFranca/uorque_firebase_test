@@ -1,5 +1,5 @@
 
-abstract class IAuthRepository{
+abstract class AuthRepositoryInterface{
 
     Future getuser();
     Future getEmailPasswordLogin();
