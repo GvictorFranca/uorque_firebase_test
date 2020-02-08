@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputField extends StatelessWidget {
   final String hint;
@@ -21,13 +22,14 @@ class InputField extends StatelessWidget {
               onChanged: onChanged,
               decoration: InputDecoration(
                   hintText: hint,
-                  hintStyle: TextStyle(color: Colors.black),
+                  hintStyle: GoogleFonts.openSans(),
                   focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.pinkAccent),
+                      borderSide: BorderSide(color: Colors.orange),
                       ),
                       errorText: snapshot.hasError? snapshot.error : null,
                       ),
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.black,),
+              obscureText: obscure,
             );
           }
         ),
