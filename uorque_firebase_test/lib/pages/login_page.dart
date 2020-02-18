@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uorque_firebase_test/bloc/login_bloc.dart';
+import 'package:uorque_firebase_test/repository/login_remote_data_source.dart';
+import 'package:uorque_firebase_test/repository/login_remote_datasource_impl.dart';
+import 'package:uorque_firebase_test/repository/login_repository_impl.dart';
+import 'package:uorque_firebase_test/repository/mapper.dart';
 import 'package:uorque_firebase_test/widgets/input_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,7 +13,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _loginBloc = LoginBloc();
+  final _loginBloc =
+      LoginBloc(LoginRepositoryImpl(LoginRemoteDataSourceImpl(Mapper())));
 
   @override
   void initState() {
@@ -63,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               case LoginState.SUCCESS:
               case LoginState.IDLE:
                 return Padding(
-                  padding: EdgeInsets.only(top:60),
+                  padding: EdgeInsets.only(top: 60),
                   child: SingleChildScrollView(
                     child: Container(
                       color: Colors.white12,

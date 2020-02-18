@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const title = "Ola! E novo por aqui ?";
+const title = "Ola! É novo por aqui?";
 
 const subTitile = "Escolha como prefere iniciar seu cadastro";
 

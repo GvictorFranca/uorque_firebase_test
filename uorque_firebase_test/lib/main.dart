@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uorque_firebase_test/pages/home_page.dart';
-import 'package:uorque_firebase_test/pages/login_page.dart';
-import 'package:uorque_firebase_test/pages/uorque_home.dart';
+
 import 'package:uorque_firebase_test/routes/route_generator.dart';
 
 

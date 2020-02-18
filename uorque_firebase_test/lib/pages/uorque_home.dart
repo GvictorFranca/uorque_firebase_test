@@ -8,7 +8,7 @@ class UorqueHome extends StatefulWidget {
 }
 
 class _UorqueHomeState extends State<UorqueHome> {
-  final _loginBloc = LoginBloc();
+  
 
   List<String> categoryService = [
     "Assistencia Tecnica",
@@ -64,31 +64,28 @@ class _UorqueHomeState extends State<UorqueHome> {
         ),
         SizedBox(height: 30),
         ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
             itemCount: categoryService.length,
             itemBuilder: (context, index) {
-              return Card(
-                  elevation: 10,
-                  child: Container(
-                    height: 50,
-                    width: 80,
-                    child: Row(
+              child:
+              Container(
+                height: 50,
+                width: 80,
+                child: Row(
+                  children: <Widget>[
+                    Icon(categoryIcons[index]),
+                    Column(
                       children: <Widget>[
-                        Icon(categoryIcons[index]),
-                        Column(
-                          children: <Widget>[
-                            Text("${categoryService[index]}"),
-                            Text('${subtitleCategory[index]}'),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 100),
-                          child: Icon(Icons.arrow_right),
-                        )
+                        Text("${categoryService[index]}"),
+                        Text('${subtitleCategory[index]}'),
                       ],
                     ),
-                  ));
+                    Padding(
+                      padding: const EdgeInsets.only(left: 100),
+                      child: Icon(Icons.arrow_right),
+                    )
+                  ],
+                ),
+              );
             }),
       ]),
       bottomNavigationBar: BottomNavigationBar(
