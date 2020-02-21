@@ -28,6 +28,9 @@ dependencies:
   rxdart: ^0.23.1
   flutter_svg: ^0.17.1
   dartz: ^0.8.9
+  provider: ^4.0.4
+  sailor: ^0.5.0
+  kiwi: ^0.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,6 +40,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  kiwi_generator: ^0.4.0
 
 
 # For information on the generic Dart part of this file, see the
@@ -58,6 +63,8 @@ flutter:
      - assets/images/CONSULTORIA.svg
      - assets/images/DESIGN.svg
      - assets/images/AULAS.svg
+     - assets/images/ABERTO.svg
+     - assets/images/CONCLUIDO.svg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

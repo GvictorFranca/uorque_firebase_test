@@ -16,10 +16,10 @@ class _HomePageState extends State<HomePage> {
     var mediaQueryEntrar = MediaQuery.of(context).size.width * 0.82;
     var mediaQueryMarginColumn = MediaQuery.of(context).size.height * 0.049;
     var mediaQueryIconTopColumn = MediaQuery.of(context).size.height * 0.085;
-    var mediaQueryIconWidth = MediaQuery.of(context).size.width /3;
-    var mediaQueryIconHeight = MediaQuery.of(context).size.height * 0.13;
-    var mediaQueryTitleWidth = MediaQuery.of(context).size.width* 0.58;
-    var mediaQueryTitleHeight = MediaQuery.of(context).size.width* 0.03;
+    var mediaQueryIconWidth = MediaQuery.of(context).size.width / 3;
+    var mediaQueryIconHeight = MediaQuery.of(context).size.height * 0.137;
+    var mediaQueryTitleWidth = MediaQuery.of(context).size.width * 0.58;
+    var mediaQueryTitleHeight = MediaQuery.of(context).size.width * 0.03;
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -43,6 +43,156 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.05,
+                  left: MediaQuery.of(context).size.width * 0.08,
+                  right: MediaQuery.of(context).size.width * 0.08),
+              child: Container(
+                  height: MediaQuery.of(context).size.height * 0.78,
+                  color: Colors.yellowAccent,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: mediaQueryIconHeight,
+                        width: mediaQueryIconWidth,
+                        child: SvgPicture.asset(iconUorque),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.width * 0.08),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.047,
+                          width: MediaQuery.of(context).size.width * 0.70,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(color: Colors.redAccent),
+                            child: FittedBox(
+                              child: Text(
+                                title,
+                                style: GoogleFonts.openSans(
+                                  
+                                  fontWeight: FontWeight.bold,
+                                  color: titleColor,
+                                ),
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.025,
+                          width: double.infinity,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(color: Colors.redAccent),
+                            child: FittedBox(
+                              child: Text(
+                                subTitile,
+                                style: GoogleFonts.openSans(
+                                  
+                                  fontWeight: FontWeight.bold,
+                                  color: subTitleColor,
+                                ),
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      Padding(
+                        padding:EdgeInsets.only(top:MediaQuery.of(context).size.height*0.035),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.078,
+                          width: double.infinity,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            color: faceButtonColor,
+                            onPressed: () {},
+                            child: Center(
+                              child: Text(
+                                facebookTitle,
+                                style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).primaryColor),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.078,
+                        width: double.infinity,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/second');
+                          },
+                          child: Center(
+                            child: Text(
+                              createAc,
+                              style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.w500,
+                                  color: titleColor),
+                            ),
+                          ),
+                        ),
+                      ),
+                      
+                         Padding(
+                           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.119),
+                           child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.025,
+                            width: double.infinity,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.redAccent),
+                              child: FittedBox(
+                                child: Text(
+                                  subTitile,
+                                  style: GoogleFonts.openSans(
+                                    
+                                    fontWeight: FontWeight.bold,
+                                    color: subTitleColor,
+                                  ),
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                        ),
+                         ),
+                            Padding(
+                              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05),
+                              child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.025,
+                          width: double.infinity,
+                          child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.redAccent),
+                              child: FittedBox(
+                                child: Text(
+                                  subTitile,
+                                  style: GoogleFonts.openSans(
+                                    
+                                    fontWeight: FontWeight.bold,
+                                    color: subTitleColor,
+                                  ),
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                          ),
+                        ),
+                            ),
+                    ],
+                  )),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/* Padding(
               padding: EdgeInsets.only(top: mediaQueryIconTopColumn),
               child: SizedBox(
                 height: mediaQueryIconHeight,
@@ -119,9 +269,4 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+            */

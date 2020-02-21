@@ -9,6 +9,7 @@ import 'package:uorque_firebase_test/repository/login_repository.dart.dart';
 enum LoginState { IDLE, LOADING, SUCCESS, FAIL }
 
 class LoginBloc extends BlocBase with LoginValidators {
+  
   LoginRepository _loginRepository;
 
   final _emailController = BehaviorSubject<String>();

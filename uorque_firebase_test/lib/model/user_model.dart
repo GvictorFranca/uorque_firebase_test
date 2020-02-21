@@ -1,7 +1,7 @@
 class UserModel {
 
-  final name;
+  final email;
 
-  UserModel(this.name): assert (name != null);
+  UserModel(this.email): assert (email != null);
 
 }

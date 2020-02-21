@@ -35,7 +35,61 @@ class _UorqueHomeState extends State<UorqueHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        
+      ),
       body: Column(children: <Widget>[
+        ListView()
+
+
+      ],),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              title: Text(""),
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.black,
+              ),
+              title: Text(""),
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: Text(""),
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.star,
+                color: Colors.black,
+              ),
+              title: Text(""),
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              title: Text(""),
+              backgroundColor: Colors.white),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+/*
+Column(children: <Widget>[
         Container(
           color: Colors.orangeAccent,
           height: 130,
@@ -88,45 +142,4 @@ class _UorqueHomeState extends State<UorqueHome> {
               );
             }),
       ]),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
-              title: Text(""),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.chat,
-                color: Colors.black,
-              ),
-              title: Text(""),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: Text(""),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.star,
-                color: Colors.black,
-              ),
-              title: Text(""),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              title: Text(""),
-              backgroundColor: Colors.white),
-        ],
-      ),
-    );
-  }
-}
+      */

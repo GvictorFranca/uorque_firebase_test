@@ -13,18 +13,17 @@ class LoginRemoteDataSourceImpl extends LoginRemoteDataSource {
 
   @override
   Future<Either<Failure, UserModel>> login(String email, String password) async {
-    await FirebaseAuth.instance
+     final authResult = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .catchError((e) {
           return Left(LoginFailure());
-        }).then((auth) {
-          if(auth.user != null){
-            return Right(mapper.firebaseUserToModel(auth.user));
+        });
+
+     if(authResult.user != null){
+            return Right(mapper.firebaseUserToModel(authResult.user));
           } else {
             return Left(LoginFailure());
-          } 
-        });
-    
+          }    
   }
 }
 
