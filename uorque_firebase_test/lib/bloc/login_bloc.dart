@@ -1,16 +1,19 @@
 import 'dart:async';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uorque_firebase_test/bloc/validate_bloc.dart';
 import 'package:uorque_firebase_test/failure/login_failure.dart';
-import 'package:uorque_firebase_test/repository/login_repository.dart.dart';
+import 'package:uorque_firebase_test/services/auth_repo.dart';
+import 'package:uorque_firebase_test/services/auth_repo_impl.dart';
 
 enum LoginState { IDLE, LOADING, SUCCESS, FAIL }
 
 class LoginBloc extends BlocBase with LoginValidators {
-  
-  LoginRepository _loginRepository;
+  AuthRepo _repo;
+
+  FirebaseUser firebaseUser;
 
   final _emailController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
@@ -26,9 +29,18 @@ class LoginBloc extends BlocBase with LoginValidators {
   Function(String) get changePassword => _passwordController.sink.add;
 
   Stream<bool> get outSubmitValid =>
-      Rx.combineLatest2(outEmail, outPassword, (a, b) => true);
+      Observable.combineLatest2(outEmail, outPassword, (a, b) => true);
 
-  LoginBloc(this._loginRepository) : assert(_loginRepository != null);
+  LoginBloc() {
+    FirebaseAuth.instance.onAuthStateChanged.listen((user) {
+      if (user != null) {
+        _stateController.add(LoginState.SUCCESS);
+        signOut();
+      } else {
+        _stateController.add(LoginState.IDLE);
+      }
+    });
+  }
 
   void submit() async {
     final email = _emailController.value;
@@ -36,13 +48,17 @@ class LoginBloc extends BlocBase with LoginValidators {
 
     _stateController.add(LoginState.LOADING);
 
-    await _loginRepository.login(email, password).then((result) {
-      result.fold((failure) {
-        _stateController.add(LoginState.FAIL);
-      }, (user) {
-        _stateController.add(LoginState.SUCCESS);
-      });
+    await _repo.signIn(email, password).catchError((e) {
+      _stateController.add(LoginState.FAIL);
     });
+  }
+
+  void getCurrentUser() async {
+    await _repo.getCurrentUser();
+  }
+
+  void signOut() async {
+    await _repo.signOut();
   }
 
   @override

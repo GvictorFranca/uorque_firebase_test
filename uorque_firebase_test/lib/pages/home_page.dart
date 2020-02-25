@@ -15,11 +15,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var mediaQueryEntrar = MediaQuery.of(context).size.width * 0.82;
     var mediaQueryMarginColumn = MediaQuery.of(context).size.height * 0.049;
-    var mediaQueryIconTopColumn = MediaQuery.of(context).size.height * 0.085;
+
     var mediaQueryIconWidth = MediaQuery.of(context).size.width / 3;
     var mediaQueryIconHeight = MediaQuery.of(context).size.height * 0.137;
-    var mediaQueryTitleWidth = MediaQuery.of(context).size.width * 0.58;
-    var mediaQueryTitleHeight = MediaQuery.of(context).size.width * 0.03;
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -69,7 +67,6 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 title,
                                 style: GoogleFonts.openSans(
-                                  
                                   fontWeight: FontWeight.bold,
                                   color: titleColor,
                                 ),
@@ -80,25 +77,25 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025,
-                          width: double.infinity,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.redAccent),
-                            child: FittedBox(
-                              child: Text(
-                                subTitile,
-                                style: GoogleFonts.openSans(
-                                  
-                                  fontWeight: FontWeight.bold,
-                                  color: subTitleColor,
-                                ),
+                        height: MediaQuery.of(context).size.height * 0.025,
+                        width: double.infinity,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.redAccent),
+                          child: FittedBox(
+                            child: Text(
+                              subTitile,
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.bold,
+                                color: subTitleColor,
                               ),
-                              fit: BoxFit.cover,
                             ),
+                            fit: BoxFit.cover,
                           ),
                         ),
+                      ),
                       Padding(
-                        padding:EdgeInsets.only(top:MediaQuery.of(context).size.height*0.035),
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.035),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * 0.078,
                           width: double.infinity,
@@ -139,49 +136,48 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      
-                         Padding(
-                           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.119),
-                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.025,
-                            width: double.infinity,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(color: Colors.redAccent),
-                              child: FittedBox(
-                                child: Text(
-                                  subTitile,
-                                  style: GoogleFonts.openSans(
-                                    
-                                    fontWeight: FontWeight.bold,
-                                    color: subTitleColor,
-                                  ),
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                        ),
-                         ),
-                            Padding(
-                              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05),
-                              child: SizedBox(
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.119),
+                        child: SizedBox(
                           height: MediaQuery.of(context).size.height * 0.025,
                           width: double.infinity,
                           child: DecoratedBox(
-                              decoration: BoxDecoration(color: Colors.redAccent),
-                              child: FittedBox(
-                                child: Text(
-                                  subTitile,
-                                  style: GoogleFonts.openSans(
-                                    
-                                    fontWeight: FontWeight.bold,
-                                    color: subTitleColor,
-                                  ),
+                            decoration: BoxDecoration(color: Colors.redAccent),
+                            child: FittedBox(
+                              child: Text(
+                                subTitile,
+                                style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.bold,
+                                  color: subTitleColor,
                                 ),
-                                fit: BoxFit.cover,
                               ),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.05),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.025,
+                          width: double.infinity,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(color: Colors.redAccent),
+                            child: FittedBox(
+                              child: Text(
+                                subTitile,
+                                style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.bold,
+                                  color: subTitleColor,
+                                ),
+                              ),
+                              fit: BoxFit.cover,
                             ),
+                          ),
+                        ),
+                      ),
                     ],
                   )),
             ),
