@@ -56,7 +56,7 @@ class App extends StatelessWidget {
         } else if (state is AuthenticatedState) {
           return HomePageParent(user: state.user, authRepo: authRepo,);
         } else if (state is UnAuthenticatedState) {
-          return LoginPageParent();
+          return InitialPage();
         }
       },
     );
@@ -86,7 +86,7 @@ class Routes {
       SailorRoute(
           name: '/login',
           builder: (context, args, params) {
-            return LoginPAge();
+            return LoginPageParent();
           }),
       SailorRoute(
           name: '/homePageParent',
@@ -100,6 +100,8 @@ class Routes {
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.orange,
+    );
   }
 }

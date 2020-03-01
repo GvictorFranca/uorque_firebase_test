@@ -15,7 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthState get initialState => AuthInitialState();
 
   @override
-  Stream<AuthState> mapEventToState(AuthEvent event) async* {
+    Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is AppStartedEvent) {
       try {
         var isSignedIn = await authRepo.isSignedIn();

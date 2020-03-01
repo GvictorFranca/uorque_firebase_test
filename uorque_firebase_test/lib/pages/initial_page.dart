@@ -46,44 +46,109 @@ class _InitialPageState extends State<InitialPage> {
                   left: MediaQuery.of(context).size.width * 0.08,
                   right: MediaQuery.of(context).size.width * 0.08),
               child: Container(
-                  height: MediaQuery.of(context).size.height * 0.78,
-                  color: Colors.yellowAccent,
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: mediaQueryIconHeight,
-                        width: mediaQueryIconWidth,
-                        child: SvgPicture.asset(iconUorque),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.width * 0.08),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.047,
-                          width: MediaQuery.of(context).size.width * 0.70,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.redAccent),
-                            child: FittedBox(
-                              child: Text(
-                                title,
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                  color: titleColor,
-                                ),
+                height: MediaQuery.of(context).size.height * 0.78,
+                
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: mediaQueryIconHeight,
+                      width: mediaQueryIconWidth,
+                      child: SvgPicture.asset(iconUorque),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.width * 0.08),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.047,
+                        width: MediaQuery.of(context).size.width * 0.70,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(),
+                          child: FittedBox(
+                            child: Text(
+                              title,
+                              style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.bold,
+                                color: titleColor,
                               ),
-                              fit: BoxFit.cover,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.0089),
+                    SizedBox(
+                      // height: MediaQuery.of(context).size.height * 0.025,
+                      width: double.infinity,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(),
+                        child: FittedBox(
+                          child: Text(
+                            subTitile,
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold,
+                              color: subTitleColor,
+                            ),
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.035),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.078,
+                        width: double.infinity,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: faceButtonColor,
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              facebookTitle,
+                              style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context).primaryColor),
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
+                    ),
+                    SizedBox(height: 20),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.078,
+                      width: double.infinity,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        color: Theme.of(context).primaryColor,
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/second');
+                        },
+                        child: Center(
+                          child: Text(
+                            createAc,
+                            style: GoogleFonts.openSans(
+                                fontWeight: FontWeight.w500, color: titleColor),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //width: double.infinity,
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.119),
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width * 0.30,
                         child: DecoratedBox(
-                          decoration: BoxDecoration(color: Colors.redAccent),
+                          decoration: BoxDecoration(),
                           child: FittedBox(
                             child: Text(
-                              subTitile,
+                              "Cadastrar Depois >",
                               style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
                                 color: subTitleColor,
@@ -93,94 +158,52 @@ class _InitialPageState extends State<InitialPage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.035),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.078,
-                          width: double.infinity,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            color: faceButtonColor,
-                            onPressed: () {},
-                            child: Center(
-                              child: Text(
-                                facebookTitle,
-                                style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.w500,
-                                    color: Theme.of(context).primaryColor),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.078,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.05),
+                      child: SizedBox(
+                        //height: MediaQuery.of(context).size.height * 0.025,
                         width: double.infinity,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          color: Theme.of(context).primaryColor,
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/second');
-                          },
-                          child: Center(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(),
+                          child: FittedBox(
                             child: Text(
-                              createAc,
+                              "Ao logar no Uorque, você concorda com nossos Termos e\n Politica de Privacidade",
+                              textAlign: TextAlign.center,
                               style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w500,
-                                  color: titleColor),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.119),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025,
-                          width: double.infinity,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.redAccent),
-                            child: FittedBox(
-                              child: Text(
-                                subTitile,
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                  color: subTitleColor,
-                                ),
+                                fontWeight: FontWeight.bold,
+                                color: subTitleColor,
                               ),
-                              fit: BoxFit.cover,
                             ),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.05),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.025,
-                          width: double.infinity,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.redAccent),
-                            child: FittedBox(
-                              child: Text(
-                                subTitile,
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                  color: subTitleColor,
-                                ),
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
+                    ),
+                  ],
+                ),
+              ),
             ),
+            Container(
+              height: MediaQuery.of(context).size.height* 0.0919,
+              width: double.maxFinite,
+              color: Colors.grey.withOpacity(0.2),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.23),
+                    child: Text('É um profissional?'),
+                  ),
+                  Text('Faça seu cadastro',
+                  style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16
+                  ))
+                ]
+              ),
+            )
           ],
         ),
       ),

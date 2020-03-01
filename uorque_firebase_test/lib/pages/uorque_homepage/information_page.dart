@@ -11,13 +11,13 @@ class InformationPageParent extends StatelessWidget {
   FirebaseUser user;
   AuthRepo authRepo;
 
-  InformationPageParent({@required this.user, @required thisauthRepo});
+  InformationPageParent({@required this.user, @required this.authRepo});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomePageBloc(authRepo: authRepo),
-      child: InformationPage(user: user,),
+      child: InformationPage(user: user, authRepo: authRepo),
     );
   }
 }
@@ -28,10 +28,10 @@ class InformationPageParent extends StatelessWidget {
 
 class InformationPage extends StatelessWidget {
   FirebaseUser user;
-
+  AuthRepo authRepo;
   HomePageBloc homePageBloc;
 
-  InformationPage({@required this.user});
+  InformationPage({@required this.user, @required this.authRepo});
 
   @override
   Widget build(BuildContext context) {

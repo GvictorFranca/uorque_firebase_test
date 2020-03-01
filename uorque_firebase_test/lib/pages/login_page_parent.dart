@@ -18,13 +18,14 @@ class LoginPageParent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserLoginBloc(authRepo: authRepo),
+      create: (context) => UserLoginBloc(),
       child: LoginPAge(),
     );
   }
 }
 
 class LoginPAge extends StatelessWidget {
+ 
   TextEditingController emailCntrlr = TextEditingController();
   TextEditingController passCntrlr = TextEditingController();
   UserLoginBloc userLoginBloc;
@@ -34,12 +35,10 @@ class LoginPAge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     userLoginBloc = BlocProvider.of<UserLoginBloc>(context);
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-      ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -85,6 +84,7 @@ class LoginPAge extends StatelessWidget {
             Container(
               child: TextField(
                 controller: passCntrlr,
+                obscureText: true,
                 decoration: InputDecoration(
                   errorStyle: TextStyle(color: Colors.white),
                   filled: true,
@@ -92,8 +92,9 @@ class LoginPAge extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: "Password",
                   hintText: "Password",
+                  
                 ),
-                keyboardType: TextInputType.visiblePassword,
+                keyboardType: TextInputType.text
               ),
             ),
             Row(
@@ -167,7 +168,7 @@ class LoginPAge extends StatelessWidget {
     );
   }
 
-   void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
+  void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return HomePageParent(user: user, authRepo: authRepo);
     }));
