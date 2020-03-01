@@ -29,13 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
-  bloc_pattern:
-    dependency: "direct main"
+  bloc:
+    dependency: transitive
     description:
-      name: bloc_pattern
+      name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.1"
+    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -176,6 +176,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.9"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   firebase:
     dependency: transitive
     description:
@@ -244,6 +251,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -388,7 +402,7 @@ packages:
     source: hosted
     version: "3.4.4995"
   meta:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: meta
       url: "https://pub.dartlang.org"
@@ -521,12 +535,12 @@ packages:
     source: hosted
     version: "2.0.5"
   rxdart:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.19.0"
+    version: "0.23.1"
   sailor:
     dependency: "direct main"
     description:

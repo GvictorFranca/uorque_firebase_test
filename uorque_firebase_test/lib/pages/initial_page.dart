@@ -5,12 +5,12 @@ import 'package:uorque_firebase_test/styles/colors.dart';
 import 'package:uorque_firebase_test/styles/icons.dart';
 import 'package:uorque_firebase_test/styles/textContants.dart';
 
-class HomePage extends StatefulWidget {
+class InitialPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _InitialPageState createState() => _InitialPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _InitialPageState extends State<InitialPage> {
   @override
   Widget build(BuildContext context) {
     var mediaQueryEntrar = MediaQuery.of(context).size.width * 0.82;

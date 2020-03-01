@@ -1,13 +1,17 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sailor/sailor.dart';
-import 'package:uorque_firebase_test/pages/home_page.dart';
-import 'package:uorque_firebase_test/pages/login_page.dart';
+import 'package:uorque_firebase_test/bloc/auth_bloc/auth_bloc.dart';
+import 'package:uorque_firebase_test/bloc/auth_bloc/auth_event.dart';
+import 'package:uorque_firebase_test/bloc/auth_bloc/auth_state.dart';
+import 'package:uorque_firebase_test/pages/initial_page.dart';
+import 'package:uorque_firebase_test/pages/login_page_parent.dart';
+import 'package:meta/meta.dart';
+
 import 'package:uorque_firebase_test/pages/sign_in_page_one.dart';
-import 'package:uorque_firebase_test/pages/uorque_home.dart';
-
-
-import 'package:uorque_firebase_test/widgets/card_tile.dart';
+import 'package:uorque_firebase_test/pages/uorque_homepage/home_page_aparent.dart';
+import 'package:uorque_firebase_test/repositories/auth_repo..dart';
 
 void main() {
   Routes.createRoutes();
@@ -15,20 +19,47 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+ 
+  AuthRepo authRepo = AuthRepo();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-          title: 'FireBaseUorque',
-          theme: ThemeData(
-            primaryColor: Colors.white,
-          ),
-          debugShowCheckedModeBanner: false,
-          home: HomePage(),
-          onGenerateRoute: Routes.sailor.generator(),
+        title: 'FireBaseUorque',
+        theme: ThemeData(
+          primaryColor: Colors.white,
+        ),
+        onGenerateRoute: Routes.sailor.generator(),
           navigatorKey: Routes.sailor.navigatorKey,
-      );
-  
+        debugShowCheckedModeBanner: false,
+        home: BlocProvider(
+          create: (context) => AuthBloc(authRepo: authRepo)..add(AppStartedEvent()),
+          child: App(authRepo: authRepo),
+          
+        ));
+  }
+}
+
+class App extends StatelessWidget {
+
+
+   AuthRepo authRepo;
+
+  App({@required this.authRepo});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthInitialState) {
+          return SplashScreen();
+        } else if (state is AuthenticatedState) {
+          return HomePageParent(user: state.user, authRepo: authRepo,);
+        } else if (state is UnAuthenticatedState) {
+          return LoginPageParent();
+        }
+      },
+    );
   }
 }
 
@@ -40,7 +71,7 @@ class Routes {
       SailorRoute(
           name: '/',
           builder: (context, args, params) {
-            return LoginPage();
+            return InitialPage();
           }),
       SailorRoute(
           name: '/second',
@@ -55,15 +86,20 @@ class Routes {
       SailorRoute(
           name: '/login',
           builder: (context, args, params) {
-            return LoginPage();
+            return LoginPAge();
           }),
       SailorRoute(
-          name: '/uorqueHome',
+          name: '/homePageParent',
           builder: (context, args, params) {
-            return UorqueHome();
+            return HomePageParent();
           }),
     ]);
   }
 }
 
-
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

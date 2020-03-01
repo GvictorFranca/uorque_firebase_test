@@ -20,18 +20,21 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_auth: ^0.15.4
-  bloc_pattern: ^2.5.1
+
   cloud_firestore: ^0.13.0+1
   firebase_storage: ^3.1.1 
   google_fonts: ^0.3.7
   path_provider: ^1.6.0
-  rxdart: ^0.19.0
+
   flutter_svg: ^0.17.1
   dartz: ^0.8.9
   provider: ^4.0.4
   sailor: ^0.5.0
   kiwi: ^0.2.0
   material_design_icons_flutter: ^3.4.4995
+  equatable: ^1.0.1
+  flutter_bloc: ^3.0.0
+  meta: ^1.1.8
 
 
   # The following adds the Cupertino Icons font to your application.

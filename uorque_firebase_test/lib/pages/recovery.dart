@@ -1,17 +1,19 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:uorque_firebase_test/bloc/login_bloc.dart';
+
 
 import 'package:uorque_firebase_test/widgets/input_field.dart';
 
 class LoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageRecoveryState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   
-  final _loginBloc = LoginBloc();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -112,3 +114,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+*/
