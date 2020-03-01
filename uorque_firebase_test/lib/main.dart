@@ -56,7 +56,7 @@ class App extends StatelessWidget {
         } else if (state is AuthenticatedState) {
           return HomePageParent(user: state.user, authRepo: authRepo,);
         } else if (state is UnAuthenticatedState) {
-          return InitialPage();
+          return LoginPageParent();
         }
       },
     );
