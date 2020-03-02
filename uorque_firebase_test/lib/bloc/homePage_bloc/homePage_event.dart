@@ -7,3 +7,9 @@ class LogOutEvent extends HomePageEvent{
 
   List<Object> get props => null;
 }
+
+class FetchUserEvent extends HomePageEvent {
+  @override
+  // TODO: implement props
+  List<Object> get props => null;
+}

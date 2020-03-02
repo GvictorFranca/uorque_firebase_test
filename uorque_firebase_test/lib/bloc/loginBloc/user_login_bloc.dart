@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:uorque_firebase_test/bloc/loginBloc/user_login_event.dart';
 import 'package:uorque_firebase_test/bloc/loginBloc/user_login_state.dart';
+import 'dart:developer' as developer;
+
 
 import 'package:uorque_firebase_test/repositories/auth_repo..dart';
 
@@ -20,6 +22,7 @@ class UserLoginBloc extends Bloc<UserLoginEvent, UserLoginState> {
     if (event is UserLoginButtonPressedEvent) {
       yield LoginLoadingState();
       try {
+        
         var user = await authRepo.signInEmailAndPassword(event.email, event.password);
         yield LoginSuccesseState(user);
       } catch (e) {

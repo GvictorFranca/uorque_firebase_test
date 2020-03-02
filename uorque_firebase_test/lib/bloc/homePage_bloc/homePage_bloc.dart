@@ -13,13 +13,21 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
   @override
   // TODO: implement initialState
-  HomePageState get initialState => LogOutInitialState();
+  HomePageState get initialState => HomePageInitialState();
 
   @override
   Stream<HomePageState> mapEventToState(HomePageEvent event) async* {
     if (event is LogOutEvent) {
       await authRepo.signOut();
       yield LogOutSuccessState();
+    }
+    if (event is FetchUserEvent) {
+      final userEmail = await authRepo.getCurrentUserEmail();
+      if (userEmail != null) {
+        yield HomePageLoadedState(userEmail);
+      } else {
+        yield LogOutSuccessState();
+      }
     }
   }
 }

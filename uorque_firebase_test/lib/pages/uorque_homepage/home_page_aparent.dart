@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_bloc.dart';
 import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_event.dart';
+import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_state.dart';
 
 import 'package:uorque_firebase_test/pages/uorque_homepage/information_page.dart';
 import 'package:uorque_firebase_test/repositories/auth_repo..dart';
@@ -40,8 +41,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  FirebaseUser user;
   HomePageBloc homePageBloc;
   PageController _pageController;
 
@@ -61,13 +60,37 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     homePageBloc = BlocProvider.of<HomePageBloc>(context);
+    homePageBloc.add(FetchUserEvent());
 
-    return Scaffold(
+    return BlocListener < HomePageBloc, HomePageState>(
+            listener: (context, state) {
+              if (state is LogOutSuccessState) {
+                Navigator.of(context).popAndPushNamed('/');
+              }
+            },
+            child: BlocBuilder<HomePageBloc, HomePageState>(
+              builder: (context, state) {
+                if (state is HomePageInitialState) {
+                  homePageBloc.add(FetchUserEvent());
+                  return Container();
+                } else if (state is HomePageLoadedState) {
+                  return body(homePageBloc);
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          );
+    
+}
+
+Widget body(HomePageBloc homePageBloc) {
+return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.orange,
         actions: <Widget>[
-          Text('${user.email}'),
+          getHeader(homePageBloc.state),
           IconButton(
             icon: Icon(
               Icons.close,
@@ -166,3 +189,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+Widget getHeader(HomePageState state) {
+  if (state is HomePageLoadedState) {
+    return Text('${state.userEmail}');
+  } else {
+    return Container();
+  }
+    
+} 

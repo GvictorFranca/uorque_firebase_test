@@ -1,20 +1,26 @@
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:uorque_firebase_test/data_source/preferences_datasource.dart';
 import 'package:uorque_firebase_test/utils/erro_codes.dart';
+import 'dart:developer' as developer;
 
 class AuthRepo {
   FirebaseAuth firebaseAuth;
+  PreferencesDataSource preferencesDataSource;
 
   AuthRepo() {
     this.firebaseAuth = FirebaseAuth.instance;
+    this.preferencesDataSource = PreferencesDataSource();
   }
 
   Future<FirebaseUser> signInEmailAndPassword(String email, String password) async {
+    developer.log(FirebaseAuth.instance.toString(), name: "teste");
      try {
-      AuthResult authresult = await firebaseAuth.signInWithEmailAndPassword(
+      AuthResult authresult = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      preferencesDataSource.setCurrentUserEmail(authresult.user.email);
       return authresult.user;
 
 
@@ -57,16 +63,13 @@ class AuthRepo {
   }
 
   Future<void> signOut() async {
+    preferencesDataSource.setCurrentUserEmail(null);
     return await firebaseAuth.signOut();
   }
 
-  @override
-  Future<bool> isSignedIn() async {
-    var currentUser = await firebaseAuth.currentUser();
-    return currentUser != null;
-  }
 
-  Future<FirebaseUser> getCurrentUser() async {
-    return await firebaseAuth.currentUser();
+
+  Future<String> getCurrentUserEmail() async {
+    return await preferencesDataSource.getCurrentUserEmail();
   }
 }

@@ -63,7 +63,7 @@ class InformationPage extends StatelessWidget {
             },
             child: BlocBuilder<HomePageBloc, HomePageState>(
               builder: (context, state) {
-                if (state is LogOutInitialState) {
+                if (state is HomePageInitialState) {
                   return Container();
                 } else if (state is LogOutSuccessState) {
                   Navigator.of(context).popAndPushNamed('/');

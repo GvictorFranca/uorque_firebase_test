@@ -31,7 +31,7 @@ class LoginFailureState extends UserLoginState {
  
   String message;
 
-  LoginFailureState(@required this.message);
+  LoginFailureState(this.message);
  
   @override
 

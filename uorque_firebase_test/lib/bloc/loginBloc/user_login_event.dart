@@ -13,3 +13,4 @@ class UserLoginButtonPressedEvent extends UserLoginEvent {
   // TODO: implement props
   List<Object> get props => throw UnimplementedError();
 }
+

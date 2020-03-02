@@ -29,7 +29,7 @@ class _InitialPageState extends State<InitialPage> {
               padding: EdgeInsets.only(left: mediaQueryEntrar),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed('/login');
+                  Navigator.of(context).popAndPushNamed('/login');
                 },
                 child: Text(
                   "Entrar",

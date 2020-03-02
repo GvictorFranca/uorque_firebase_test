@@ -3,9 +3,19 @@
 
 abstract class HomePageState extends Equatable{}
 
-class LogOutInitialState extends HomePageState {
+class HomePageLoadedState extends HomePageState {
+    
+  String userEmail;
+
+  HomePageLoadedState(this.userEmail);
+
   @override
   // TODO: implement props
+  List<Object> get props => null;
+}
+
+class HomePageInitialState extends HomePageState {
+  @override
   List<Object> get props => null;
 }
 

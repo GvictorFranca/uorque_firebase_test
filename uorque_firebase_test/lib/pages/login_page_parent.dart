@@ -18,7 +18,7 @@ class LoginPageParent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserLoginBloc(),
+      create: (context) => UserLoginBloc(authRepo: AuthRepo()),
       child: LoginPAge(),
     );
   }
@@ -227,9 +227,7 @@ class LoginPAge extends StatelessWidget {
   }
 
   void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return HomePageParent(user: user, authRepo: authRepo);
-    }));
+    Navigator.of(context).popAndPushNamed("/homePageParent");
   }
 
   /*void navigateToSignUpScreen(BuildContext context) {

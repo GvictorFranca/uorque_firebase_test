@@ -54,9 +54,9 @@ class App extends StatelessWidget {
         if (state is AuthInitialState) {
           return SplashScreen();
         } else if (state is AuthenticatedState) {
-          return HomePageParent(user: state.user, authRepo: authRepo,);
+          return HomePageParent();
         } else if (state is UnAuthenticatedState) {
-          return LoginPageParent();
+          return InitialPage();
         }
       },
     );
