@@ -6,7 +6,6 @@ import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_bloc.dart';
 import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_event.dart';
 import 'package:uorque_firebase_test/bloc/homePage_bloc/homePage_state.dart';
 
-import 'package:uorque_firebase_test/pages/uorque_homepage/information_page.dart';
 import 'package:uorque_firebase_test/repositories/auth_repo..dart';
 import 'package:uorque_firebase_test/widgets/card_tile.dart';
 
@@ -62,41 +61,40 @@ class _HomePageState extends State<HomePage> {
     homePageBloc = BlocProvider.of<HomePageBloc>(context);
     homePageBloc.add(FetchUserEvent());
 
-    return BlocListener < HomePageBloc, HomePageState>(
-            listener: (context, state) {
-              if (state is LogOutSuccessState) {
-                Navigator.of(context).popAndPushNamed('/');
-              }
-            },
-            child: BlocBuilder<HomePageBloc, HomePageState>(
-              builder: (context, state) {
-                if (state is HomePageInitialState) {
-                  homePageBloc.add(FetchUserEvent());
-                  return Container();
-                } else if (state is HomePageLoadedState) {
-                  return body(homePageBloc);
-                } else {
-                  return Container();
-                }
-              },
-            ),
-          );
-    
-}
+    return BlocListener<HomePageBloc, HomePageState>(
+      listener: (context, state) {
+        if (state is LogOutSuccessState) {
+          Navigator.of(context).popAndPushNamed('/');
+        }
+      },
+      child: BlocBuilder<HomePageBloc, HomePageState>(
+        builder: (context, state) {
+          if (state is HomePageInitialState) {
+            homePageBloc.add(FetchUserEvent());
+            return Container();
+          } else if (state is HomePageLoadedState) {
+            return body(homePageBloc);
+          } else {
+            return Container();
+          }
+        },
+      ),
+    );
+  }
 
-Widget body(HomePageBloc homePageBloc) {
-return Scaffold(
+  Widget body(HomePageBloc homePageBloc) {
+    return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.orange,
+        automaticallyImplyLeading: false,
         actions: <Widget>[
-          getHeader(homePageBloc.state),
           IconButton(
             icon: Icon(
               Icons.close,
               color: Colors.white,
             ),
-            onPressed: (){
+            onPressed: () {
               homePageBloc.add(LogOutEvent());
             },
           )
@@ -118,8 +116,11 @@ return Scaffold(
           onPageChanged: (p) {},
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
-            Container(),
-            Container(),
+            Center(child: getHeader(homePageBloc.state)),
+            Container(
+              child: Center(child: Text('Page 2',
+              style: GoogleFonts.openSans(),)),
+            ),
             ListView(
               children: <Widget>[
                 SizedBox(
@@ -140,10 +141,17 @@ return Scaffold(
                 CardTile()
               ],
             ),
-            Container(),
-            InformationPage(),
+            Container(
+              child: Center(child: Text('Page 4',
+              style: GoogleFonts.openSans(),)),
+            ),
+            Container(
+              child: Center(child: Text('Page 5',
+              style: GoogleFonts.openSans(),)),
+            ),
           ]),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0.3,
         onTap: (p) {
           _pageController.animateToPage(p,
               duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
@@ -158,28 +166,28 @@ return Scaffold(
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search,
+                Icons.chat,
                 color: Colors.black,
               ),
               title: Padding(padding: EdgeInsets.all(0)),
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search,
+                Icons.home,
                 color: Colors.black,
               ),
               title: Padding(padding: EdgeInsets.all(0)),
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search,
+                Icons.star,
                 color: Colors.black,
               ),
               title: Padding(padding: EdgeInsets.all(0)),
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search,
+                Icons.person,
                 color: Colors.black,
               ),
               title: Padding(padding: EdgeInsets.all(0)),
@@ -190,13 +198,13 @@ return Scaffold(
   }
 }
 
-
-
 Widget getHeader(HomePageState state) {
   if (state is HomePageLoadedState) {
-    return Text('${state.userEmail}');
+    return Text(
+      'Ola : ${state.userEmail}',
+      style: GoogleFonts.openSans(),
+    );
   } else {
     return Container();
   }
-    
-} 
+}

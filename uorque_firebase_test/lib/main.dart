@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sailor/sailor.dart';
@@ -19,7 +18,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
- 
   AuthRepo authRepo = AuthRepo();
 
   @override
@@ -30,20 +28,18 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.white,
         ),
         onGenerateRoute: Routes.sailor.generator(),
-          navigatorKey: Routes.sailor.navigatorKey,
+        navigatorKey: Routes.sailor.navigatorKey,
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
-          create: (context) => AuthBloc(authRepo: authRepo)..add(AppStartedEvent()),
+          create: (context) =>
+              AuthBloc(authRepo: authRepo)..add(AppStartedEvent()),
           child: App(authRepo: authRepo),
-          
         ));
   }
 }
 
 class App extends StatelessWidget {
-
-
-   AuthRepo authRepo;
+  AuthRepo authRepo;
 
   App({@required this.authRepo});
 
@@ -101,7 +97,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.orange,
+      color: Colors.white,
+      child: Center(child: Image.asset('assets/images/icone_preview.png')),
     );
   }
 }

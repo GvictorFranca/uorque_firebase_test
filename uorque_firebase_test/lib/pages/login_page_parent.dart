@@ -37,163 +37,168 @@ class LoginPAge extends StatelessWidget {
     userLoginBloc = BlocProvider.of<UserLoginBloc>(context);
     // TODO: implement build
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.82,
-          
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                child: BlocListener<UserLoginBloc, UserLoginState>(
-                  listener: (context, state) {
-                    if (state is LoginSuccesseState) {
-                      navigateToHomeScreen(context, state.user);
-                    }
-                  },
-                  child: BlocBuilder<UserLoginBloc, UserLoginState>(
-                    builder: (context, state) {
-                      if (state is LoginInitialState) {
-                        return buildInitialUi();
-                      } else if (state is LoginLoadingState) {
-                        return buildLoadingUi();
-                      } else if (state is LoginFailureState) {
-                        return buildFailureUi(state.message);
-                      } else if (state is LoginSuccesseState) {
-                        emailCntrlr.text = "";
-                        passCntrlr.text = "";
-                        return Container();
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: BlocListener<UserLoginBloc, UserLoginState>(
+                    listener: (context, state) {
+                      if (state is LoginSuccesseState) {
+                        navigateToHomeScreen(context, state.user);
                       }
                     },
+                    child: BlocBuilder<UserLoginBloc, UserLoginState>(
+                      builder: (context, state) {
+                        if (state is LoginInitialState) {
+                          return buildInitialUi();
+                        } else if (state is LoginLoadingState) {
+                          return buildLoadingUi();
+                        } else if (state is LoginFailureState) {
+                          return buildFailureUi(state.message);
+                        } else if (state is LoginSuccesseState) {
+                          emailCntrlr.text = "";
+                          passCntrlr.text = "";
+                          return Container();
+                        }
+                      },
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
+             
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: MediaQuery.of(context).size.width * 0.696,
+                      bottom: MediaQuery.of(context).size.height * 0.024),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.24,
+                    child: FittedBox(
+                      child: Text(
+                        "Entrar",
+                        style: GoogleFonts.openSans(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
                     right: MediaQuery.of(context).size.width * 0.696,
-                    bottom: MediaQuery.of(context).size.height * 0.024),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.24,
-                  child: FittedBox(
-                    child: Text(
-                      "Entrar",
-                      style: GoogleFonts.openSans(
-                          fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.030,
+                    width: MediaQuery.of(context).size.width * 0.31,
+                    child: FittedBox(
+                      child: Text("EMAIL",
+                          style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold, color: Colors.grey)),
                     ),
                   ),
                 ),
-              ),
-                 Padding(
-                padding:EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.696,),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.030,
-                  width: MediaQuery.of(context).size.width * 0.31,
-                  child: FittedBox(
-                    child: Text(
-                      "EMAIL",
-                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold
-                      ,color: Colors.grey)
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.88,
-                child: TextFormField(
-                  controller: emailCntrlr,
-                  decoration: InputDecoration(
-                    errorStyle: TextStyle(color: Colors.white),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.032),
-              Padding(
-                padding:EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.694,),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.030,
-                  width: MediaQuery.of(context).size.width * 0.31,
-                  child: FittedBox(
-                    child: Text(
-                      "SENHA",
-                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold
-                      ,color: Colors.grey)
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.88,
-                child: TextFormField(
-                    controller: passCntrlr,
-                    obscureText: true,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.88,
+                  child: TextFormField(
+                    controller: emailCntrlr,
                     decoration: InputDecoration(
                       errorStyle: TextStyle(color: Colors.white),
                       filled: true,
                       fillColor: Colors.white,
-                      labelStyle: GoogleFonts.openSans(),
                     ),
-                    keyboardType: TextInputType.text),
-              ),
-              Padding(
-                padding:EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width*0.53,
-                  top: MediaQuery.of(context).size.height*0.041,
-                  bottom: MediaQuery.of(context).size.height*0.10,
-                  
+                    keyboardType: TextInputType.emailAddress,
                   ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.29,
-                  child: FittedBox(
-                    child: Text(
-                      "Recuperar senha",
-                      style: GoogleFonts.openSans(fontWeight: FontWeight.bold,
-                      color: Colors.grey),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.032),
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.width * 0.694,
+                  ),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.030,
+                    width: MediaQuery.of(context).size.width * 0.31,
+                    child: FittedBox(
+                      child: Text("SENHA",
+                          style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.bold, color: Colors.grey)),
                     ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.34,
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.88,
+                  child: TextFormField(
+                      controller: passCntrlr,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        errorStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelStyle: GoogleFonts.openSans(),
                       ),
-                      color: Colors.orange,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Entrar",
-                          style: GoogleFonts.openSans(
-                            fontWeight:FontWeight.bold,
-                            fontSize:16
-                          ),),
-                          Icon(Icons.arrow_right,
-                          color: Colors.white,)
-                        ],
+                      keyboardType: TextInputType.text),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.53,
+                    top: MediaQuery.of(context).size.height * 0.041,
+                    bottom: MediaQuery.of(context).size.height * 0.10,
+                  ),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.29,
+                    child: FittedBox(
+                      child: Text(
+                        "Recuperar senha",
+                        style: GoogleFonts.openSans(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
                       ),
-                      textColor: Colors.white,
-                      onPressed: () {
-                        userLoginBloc.add(
-                          UserLoginButtonPressedEvent(
-                            email: emailCntrlr.text,
-                            password: passCntrlr.text,
-                          ),
-                        );
-                      },
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.34,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.orange,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Entrar",
+                              style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Icon(
+                              Icons.arrow_right,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                        textColor: Colors.white,
+                        onPressed: () {
+                          userLoginBloc.add(
+                            UserLoginButtonPressedEvent(
+                              email: emailCntrlr.text,
+                              password: passCntrlr.text,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -206,7 +211,7 @@ class LoginPAge extends StatelessWidget {
 
   Widget buildLoadingUi() {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -226,46 +231,11 @@ class LoginPAge extends StatelessWidget {
     );
   }
 
-  void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
+  void navigateToHomeScreen(context, user) {
     Navigator.of(context).popAndPushNamed("/homePageParent");
   }
 
-  /*void navigateToSignUpScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return SignUpPageParent(userRepository: userRepository);
-    }));
-  }
-  */
-}
-
-/*Column(children: <Widget>[
-        TextFormField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.person),
-            hintText: 'Digite seu email',
-            labelText: 'Email',
-          ),
-          validator: (String value) {
-            return value.contains('@') ? 'Do not use the @ char.' : null;
-          },
-        ),
-        TextFormField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.person),
-            hintText: 'Digite sua Senha',
-            labelText: 'Senha',
-          ),
-          validator: (String value) {
-            return value.contains('@') ? 'Do not use the @ char.' : null;
-          },
-        ),
-        RaisedButton(onPressed: () {})
-      ]),
-    );
+  void navigateToLoginInitial(context) {
+    Navigator.of(context).popAndPushNamed('/');
   }
 }
-
-Widget buildFailure(String message) {
-  return Text(message, style: TextStyle(color: Colors.black));
-}
-*/
